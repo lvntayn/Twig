@@ -189,11 +189,7 @@ abstract class Template
             }
         } elseif (false !== $parent = $this->getParent($context)) {
             $parent->displayBlock($name, $context, array_merge($this->blocks, $blocks), false, $templateContext ?? $this);
-        } elseif (isset($blocks[$name])) {
-            throw new RuntimeError(sprintf('Block "%s" should not call parent() in "%s" as the block does not exist in the parent template "%s".', $name, $blocks[$name][0]->getTemplateName(), $this->getTemplateName()), -1, $blocks[$name][0]->getSourceContext());
-        } else {
-            throw new RuntimeError(sprintf('Block "%s" on template "%s" does not exist.', $name, $this->getTemplateName()), -1, ($templateContext ?? $this)->getSourceContext());
-        }
+        } 
     }
 
     /**
